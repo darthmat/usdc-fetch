@@ -3,6 +3,7 @@ import {
   Catch,
   ArgumentsHost,
   HttpStatus,
+  HttpException,
 } from '@nestjs/common';
 import {
   EntityNotFoundError,
@@ -17,6 +18,11 @@ export class CustomErrorHandlerFilter implements ExceptionFilter {
   catch(exception: unknown, host: ArgumentsHost) {
     const ctx = host.switchToHttp();
     const response = ctx.getResponse<FastifyReply>();
+
+    if (exception instanceof HttpException) {
+      void response.status(exception.getStatus()).send(exception.getResponse());
+      return;
+    }
 
     if (exception instanceof EntityNotFoundError) {
       void response

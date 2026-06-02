@@ -1,3 +1,6 @@
-export interface GetBlockTransfersDto {
-  blockNumber: string;
+import { IsNumberString } from 'class-validator';
+
+export class GetBlockTransfersDto {
+  @IsNumberString()
+  blockNumber!: string;
 }
