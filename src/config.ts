@@ -7,7 +7,7 @@ export const envSchema = z.object({
     host: z.string().default('localhost'),
     port: z.coerce.number().default(6379),
     password: z.string().optional(),
-    db: z.number().default(0),
+    db: z.coerce.number().default(0),
   }),
   api: z.object({
     alchemy: z.object({

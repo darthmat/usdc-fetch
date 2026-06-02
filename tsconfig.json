@@ -1,14 +1,12 @@
 {
   "extends": "@tsconfig/node24",
   "compilerOptions": {
-    "ignoreDeprecations": "6.0",
     "lib": ["ESNext"],
 
     "sourceMap": true,
     "inlineSources": true,
     "esModuleInterop": true,
     "sourceRoot": "/app",
-    "baseUrl": "./",
     "paths": {
       "@/*": ["./src/*"]
     },
