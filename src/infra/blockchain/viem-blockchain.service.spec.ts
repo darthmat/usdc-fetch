@@ -25,6 +25,20 @@ describe('ViemBlockchainService (Unit)', () => {
   });
 
   describe('getUsdcTransfers', () => {
+    it('should call getLogs with correct parameters', async () => {
+      const blockNumber = BigInt(18000000);
+      mockGetLogs.mockResolvedValue([]);
+
+      await service.getUsdcTransfers(blockNumber);
+
+      expect(mockGetLogs).toHaveBeenCalledWith({
+        address: contractAddress,
+        event: expect.anything(),
+        fromBlock: blockNumber,
+        toBlock: blockNumber,
+      });
+    });
+
     it('should fetch logs from viem and correctly map to business objects', async () => {
       const blockNumber = BigInt(18000000);
 
