@@ -11,7 +11,7 @@ import { afterEach, beforeEach, describe, it, vi } from 'vitest';
 import { UsdcController } from '../usdc.controller';
 import { UsdcService } from '../usdc.service';
 
-describe('UsdcController (e2e)', () => {
+describe('UsdcController', () => {
   let app: INestApplication;
   const mockGetUsdcTransfers = vi.fn();
 

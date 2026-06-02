@@ -2,7 +2,7 @@ import { PublicClient } from 'viem';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { ViemBlockchainService } from './viem-blockchain.service';
 
-describe('ViemBlockchainService (Unit)', () => {
+describe('ViemBlockchainService', () => {
   let service: ViemBlockchainService;
 
   const mockGetLogs = vi.fn();
