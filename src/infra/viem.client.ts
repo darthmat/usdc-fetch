@@ -1,8 +1,10 @@
-import { createPublicClient, http } from 'viem';
+import { createPublicClient, http, PublicClient } from 'viem';
 import { mainnet } from 'viem/chains';
-import { config } from '@/config';
+import { Config } from '@/config';
 
-export const viemClient = createPublicClient({
-  chain: mainnet,
-  transport: http(config.api.alchemy.url),
-});
+export function createViemClientAdapter(config: Config): PublicClient {
+  return createPublicClient({
+    chain: mainnet,
+    transport: http(config.api.alchemy.url),
+  });
+}
