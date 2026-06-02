@@ -1,7 +1,7 @@
 import {
   IBlockchain,
   UsdcTransfer,
-} from '@/infra/blockchain/blockchain.interface';
+} from '@/modules/blockchain/blockchain.interface';
 import { CustomErrorHandlerFilter } from '@/utils/errorHandler';
 import { INestApplication, ValidationPipe } from '@nestjs/common';
 import { APP_FILTER } from '@nestjs/core';

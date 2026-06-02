@@ -1,17 +1,17 @@
 import {
-  ExceptionFilter,
-  Catch,
   ArgumentsHost,
-  HttpStatus,
+  Catch,
+  ExceptionFilter,
   HttpException,
+  HttpStatus,
 } from '@nestjs/common';
+import type { FastifyReply } from 'fastify';
 import {
   EntityNotFoundError,
-  UnavailableServiceError,
   InternalError,
   RpcError,
+  UnavailableServiceError,
 } from './errors';
-import type { FastifyReply } from 'fastify';
 
 @Catch()
 export class CustomErrorHandlerFilter implements ExceptionFilter {

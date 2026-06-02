@@ -1,8 +1,8 @@
+import { createRedisCacheAdapter } from '@/adapters/redis.adapter';
+import { createViemClientAdapter } from '@/adapters/viem.client';
 import { config } from '@/config';
 import { Cache } from '@jeengbe/cache';
 import { Module } from '@nestjs/common';
-import { createRedisCacheAdapter } from '../redis.adapter';
-import { createViemClientAdapter } from '../viem.client';
 import { ViemBlockchainServiceCached } from './blockchain.cache';
 import { IBlockchain } from './blockchain.interface';
 import { ViemBlockchainService } from './viem-blockchain.service';

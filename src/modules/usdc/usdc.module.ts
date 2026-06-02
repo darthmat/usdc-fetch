@@ -1,5 +1,5 @@
-import { BlockchainModule } from '@/infra/blockchain/blockchain.module';
 import { Module } from '@nestjs/common';
+import { BlockchainModule } from '../blockchain/blockchain.module';
 import { UsdcController } from './usdc.controller';
 import { UsdcService } from './usdc.service';
 

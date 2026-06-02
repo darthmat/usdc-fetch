@@ -1,6 +1,6 @@
-import { FakeBlockchainService } from '@/infra/blockchain/blockchain.fake';
-import { UsdcTransfer } from '@/infra/blockchain/blockchain.interface';
-import { EntityNotFoundError, RpcError } from '@/utils/errors';
+import { FakeBlockchainService } from '@/modules/blockchain/blockchain.fake';
+import { UsdcTransfer } from '@/modules/blockchain/blockchain.interface';
+import { RpcError } from '@/utils/errors';
 import { beforeEach, describe, expect, it } from 'vitest';
 import { UsdcService } from '../usdc.service';
 

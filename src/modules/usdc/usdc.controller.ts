@@ -1,6 +1,6 @@
 import { Controller, Get, Param } from '@nestjs/common';
-import { UsdcService } from './usdc.service';
 import { GetBlockTransfersDto } from './usdc.dto';
+import { UsdcService } from './usdc.service';
 
 @Controller('usdc')
 export class UsdcController {

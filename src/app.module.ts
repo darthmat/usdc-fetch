@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common';
-import { UsdcModule } from './modules/usdc/usdc.module';
-import { HealthController } from './modules/healtz/healthz.controller';
-import { CustomErrorHandlerFilter } from './utils/errorHandler';
 import { APP_FILTER } from '@nestjs/core/constants';
+import { HealthController } from './modules/healtz/healthz.controller';
+import { UsdcModule } from './modules/usdc/usdc.module';
+import { CustomErrorHandlerFilter } from './utils/errorHandler';
 
 @Module({
   imports: [UsdcModule],

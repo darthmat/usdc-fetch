@@ -1,9 +1,6 @@
-import {
-  IBlockchain,
-  UsdcTransfer,
-} from '@/infra/blockchain/blockchain.interface';
-import { EntityNotFoundError, RpcError } from '@/utils/errors';
+import { RpcError } from '@/utils/errors';
 import { Injectable } from '@nestjs/common';
+import { IBlockchain, UsdcTransfer } from '../blockchain/blockchain.interface';
 
 @Injectable()
 export class UsdcService {
