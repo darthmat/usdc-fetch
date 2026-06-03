@@ -1,3 +1,4 @@
+import { FakeBlockchainService } from '@/modules/blockchain/blockchain.fake';
 import {
   IBlockchain,
   UsdcTransfer,
@@ -13,16 +14,18 @@ import { UsdcService } from '../usdc.service';
 
 describe('UsdcController', () => {
   let app: INestApplication;
-  const mockGetUsdcTransfers = vi.fn();
+  let fakeBlockchain: FakeBlockchainService;
 
   beforeEach(async () => {
+    fakeBlockchain = new FakeBlockchainService();
+
     const module = await Test.createTestingModule({
       controllers: [UsdcController],
       providers: [
         UsdcService,
         {
           provide: IBlockchain,
-          useValue: { getUsdcTransfers: mockGetUsdcTransfers },
+          useValue: fakeBlockchain,
         },
         {
           provide: APP_FILTER,
@@ -34,8 +37,6 @@ describe('UsdcController', () => {
     app = module.createNestApplication();
     app.useGlobalPipes(
       new ValidationPipe({
-        whitelist: true,
-        transform: true,
         transformOptions: { enableImplicitConversion: true },
       }),
     );
@@ -43,7 +44,6 @@ describe('UsdcController', () => {
   });
 
   afterEach(async () => {
-    vi.clearAllMocks();
     await app.close();
   });
 
@@ -58,7 +58,7 @@ describe('UsdcController', () => {
         },
       ];
 
-      mockGetUsdcTransfers.mockResolvedValue(mockTransfers);
+      fakeBlockchain.setTransfers(BigInt(18000000), mockTransfers);
 
       await request(app.getHttpServer())
         .get('/usdc/transfers/18000000')
@@ -67,7 +67,7 @@ describe('UsdcController', () => {
     });
 
     it('should return 200 when no transfers found', async () => {
-      mockGetUsdcTransfers.mockResolvedValue([]);
+      fakeBlockchain.setTransfers(BigInt(18000000), []);
 
       await request(app.getHttpServer())
         .get('/usdc/transfers/18000000')
@@ -76,7 +76,7 @@ describe('UsdcController', () => {
     });
 
     it('should return 502 when RPC fails', async () => {
-      mockGetUsdcTransfers.mockRejectedValue(new Error('RPC error'));
+      fakeBlockchain.setError(new Error('RPC error'));
 
       await request(app.getHttpServer())
         .get('/usdc/transfers/18000000')
