@@ -1,7 +1,7 @@
 import { Cache } from '@jeengbe/cache';
 import { IBlockchain, UsdcTransfer } from './blockchain.interface';
 
-export type ItadApiCacheTypes = Record<
+export type UsdcCacheTypes = Record<
   `usdc-transfer-block:${bigint}`,
   UsdcTransfer[]
 >;
@@ -9,7 +9,7 @@ export type ItadApiCacheTypes = Record<
 export class ViemBlockchainServiceCached implements IBlockchain {
   constructor(
     private readonly delegate: IBlockchain,
-    private readonly cache: Cache<ItadApiCacheTypes>,
+    private readonly cache: Cache<UsdcCacheTypes>,
   ) {}
 
   async getUsdcTransfers(blockNumber: bigint): Promise<UsdcTransfer[]> {
