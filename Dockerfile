@@ -12,8 +12,6 @@ RUN --mount=type=cache,id=pnpm-store,target=/pnpm/store \
 COPY . .
 RUN pnpm build
 
-# ---
-
 FROM node:24-alpine AS app
 WORKDIR /app
 
